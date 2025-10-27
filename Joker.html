@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPAP Joker Generator</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom right, #f8f9fa, #e8ecef);
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: #0064B0;
+      margin-bottom: 30px;
+    }
+    button {
+      background: #0064B0;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    button:hover {
+      background: #0064B0;
+      transform: scale(1.02);
+    }
+    .numbers {
+      margin-top: 30px;
+      font-size: 22px;
+      
+    }
+    .random5{
+        color:#1265ab;
+
+    }
+
+    .joker {
+      color: #fba704;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome, Akis!</h1>
+  <h2>Let’s play OPAP Joker</h2>
+
+  <button onclick="generateJoker()">Generate Numbers</button>
+
+  <div class="numbers" id="result"></div>
+
+  <script>
+    function generateJoker() {
+      // Generate 5 unique main numbers (1–45)
+      let numbers = [];
+      while (numbers.length < 5) {
+        let num = Math.floor(Math.random() * 45) + 1;
+        if (!numbers.includes(num)) numbers.push(num);
+      }
+      numbers.sort((a, b) => a - b);
+
+      // Generate Joker number (1–20)
+      let joker = Math.floor(Math.random() * 20) + 1;
+
+      // Display results
+      document.getElementById("result").innerHTML =
+        `<p>Main Numbers: <span class="random5"><strong>${numbers.join(" - ")}</strong></span></p>
+         <p>Joker Number: <span class="joker">${joker}</span></p>`;
+    }
+  </script>
+
+</body>
+</html>
